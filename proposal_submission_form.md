@@ -9,10 +9,13 @@
 ##### `Proposing the implementation of energy efficient LED street lights with a “smart” luminosity control that can adjust the strength of light based on the various weather and traffic parameters`  
   
 #### Dataset(s) your team might use for the project (Provide name and URL):
-- ##### `YOUR DATASETS HERE`
-- ##### `YOUR DATASETS  HERE`
+- ##### 'Waether_Dataset'
+- ##### 'Street_Lights'
+- ##### 'Traffic_Dataset'
+- ##### 'SANGIS_Dataset'
+- ##### 'Tax_Dataset'
 
-#### Team Coordinator GitHub Username: `YOUR TEAM COORDINATOR GITHUB USERNAME HERE`
+#### Team Coordinator GitHub Username: `KaranShah95`
 
 #### Team Members
 | ## |        Name         | Active SDSU student? | Female active SDSU student? | Active SDSU veteran? | 14th grade (college 2nd year) or younger? |
