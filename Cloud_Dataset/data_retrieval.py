@@ -18,7 +18,6 @@ import pandas as pd
 from siphon.catalog import TDSCatalog 
 from siphon.ncss import NCSS
 
-
 import pvlib
 from pvlib.forecast import GFS, HRRR_ESRL, NAM, NDFD, HRRR, RAP
 
@@ -28,12 +27,14 @@ latitude = 32.7157
 longitude = 117.1611
 tz = 'US/Pacific'
 
-start = pd.Timestamp(datetime.date.today(), tz=tz) # today's date
-end = start + pd.Timedelta(days=30) # 7 days from today
+start = pd.Timestamp('2019/02/25', tz=tz) # today's date
+end = start + pd.Timedelta(days=14) # 7 days from today
 print(start, end)
 
 # GFS model, defaults to 0.5 degree resolution
 model_gfs = GFS()
 
 # retrieve data for gfs
-gfs_data = model_gfs.get_data(latitude, longitude, start, end)
+raw_data = model_gfs.get_data(latitude, longitude, start, end)
+data = model_gfs.process_data(raw_data)
+
