@@ -7,19 +7,19 @@ Created on Mon Mar 10 05:00:26 2019
 """
 import matplotlib.pyplot as plt
 
-import datetime
-import os
-
 import numpy as np
 import pandas as pd
 
 import pvlib
 from pvlib.forecast import GFS #, HRRR_ESRL, NAM, NDFD, HRRR, RAP
 
+location_path = "../streetlight_locations_datasd.csv"
+sll = pd.read_csv(location_path)
+
 # Choose a location based on coordinates 
 # San Diego, CA
 latitude = 32.7157
-longitude = 117.1611
+longitude = -117.1611
 tz = 'US/Pacific'
 
 #Create times to retrieve archive data
