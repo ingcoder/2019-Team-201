@@ -25,7 +25,7 @@ end = pd.Timestamp.today(tz=tz)
 start = end - pd.Timedelta(days=7)
 
 
-for index, row in sll.head(n=5).iterrows():
+for index, row in sll.iterrows():
     #print(index, row.longitude, row.latitude, row.ID)
     latitude = row.latitude
     longitude = row.longitude
