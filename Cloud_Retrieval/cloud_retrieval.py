@@ -24,7 +24,6 @@ tz = 'US/Pacific'
 end = pd.Timestamp.today(tz=tz) 
 start = end - pd.Timedelta(days=7)
 
-
 for index, row in sll.iterrows():
     #print(index, row.longitude, row.latitude, row.ID)
     latitude = row.latitude
@@ -32,5 +31,3 @@ for index, row in sll.iterrows():
     raw_data = model_gfs.get_data(latitude, longitude, start, end)
     data = model_gfs.process_data(raw_data)
     data.to_csv("../Hackathon Datasets/Cloud/cloud_ID_" + str(row.ID) + ".csv")
-
-
