@@ -11,25 +11,26 @@ import numpy as np
 import pandas as pd
 
 import pvlib
-from pvlib.forecast import GFS #, HRRR_ESRL, NAM, NDFD, HRRR, RAP
+from pvlib.forecast import GFS 
 
-location_path = "../streetlight_locations_datasd.csv"
+location_path = "streetlight_locations_datasd_ids.csv"
 sll = pd.read_csv(location_path)
-
-# Choose a location based on coordinates 
-# San Diego, CA
-latitude = 32.7157
-longitude = -117.1611
-tz = 'US/Pacific'
-
-#Create times to retrieve archive data
-end = pd.Timestamp.today(tz=tz) 
-start = end - pd.Timedelta(days=14)
 
 # GFS model, defaults to 0.5 degree resolution
 model_gfs = GFS()
 
-# retrieve data for gfs
-raw_data = model_gfs.get_data(latitude, longitude, start, end)
-data = model_gfs.process_data(raw_data)
+#Create times to retrieve archive data
+tz = 'US/Pacific'
+end = pd.Timestamp.today(tz=tz) 
+start = end - pd.Timedelta(days=7)
+
+
+for index, row in sll.head(n=5).iterrows():
+    #print(index, row.longitude, row.latitude, row.ID)
+    latitude = row.latitude
+    longitude = row.longitude
+    raw_data = model_gfs.get_data(latitude, longitude, start, end)
+    data = model_gfs.process_data(raw_data)
+    data.to_csv("../Hackathon Datasets/Cloud/cloud_ID_" + str(row.ID) + ".csv")
+
 
