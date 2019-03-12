@@ -13,23 +13,18 @@ import os
 import numpy as np
 import pandas as pd
 
-# for accessing UNIDATA THREDD servers
-#This is not a default package, use pip to install siphon and pvlib
-from siphon.catalog import TDSCatalog 
-from siphon.ncss import NCSS
-
 import pvlib
-from pvlib.forecast import GFS, HRRR_ESRL, NAM, NDFD, HRRR, RAP
+from pvlib.forecast import GFS #, HRRR_ESRL, NAM, NDFD, HRRR, RAP
 
 # Choose a location based on coordinates 
-# Tucson, AZ
+# San Diego, CA
 latitude = 32.7157
 longitude = 117.1611
 tz = 'US/Pacific'
 
-start = pd.Timestamp('2019/02/25', tz=tz) # today's date
-end = start + pd.Timedelta(days=14) # 7 days from today
-print(start, end)
+#Create times to retrieve archive data
+end = pd.Timestamp.today(tz=tz) 
+start = end - pd.Timedelta(days=14)
 
 # GFS model, defaults to 0.5 degree resolution
 model_gfs = GFS()
